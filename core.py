@@ -15,8 +15,10 @@ def filled_range(window):
 
 
 def selected_file(window, values=None, file_path=None, passive=False):
-    if not file_path:
+    if values:
         file_path = values['#file_path_invisible']
+    if not file_path:
+        return
     # auto select file
     if not passive and not window['#sel_file'].get():
         window['#sel_file'].update(value=True)
@@ -34,8 +36,14 @@ def event_process(window, event, values):
         return sys.exit(0)
     elif event == '#range':  # filled range
         return filled_range(window)
-    elif event == '#file_path_invisible':  # selected file
+    elif event == '#file_path_invisible':  # picked file
         return selected_file(window, values)
+    elif event == '#sel_range':  # selected range option
+        if values['#range']:
+            window['#draw'].update(disabled=False)
+    elif event == '#sel_file':  # selected file option
+        if values['#file_path_invisible']:
+            window['#draw'].update(disabled=False)
     elif event == '#draw':
         if session.status == 'drawing':
             session.status = ''

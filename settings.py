@@ -6,7 +6,7 @@ temp_path = os.path.join(system_temp_dir, 'ballot.json')
 
 
 # UI
-TITLE = '抽签小助手 v1.0.0'
+TITLE = '抽签小助手 v1.0.4.7'
 WELCOME = '请开始抽签'
 SEL_RANGE = '从序号中抽取：'
 SEL_FILE = '从文件中读取：'
