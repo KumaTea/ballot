@@ -29,6 +29,8 @@ def file_path_trimmer(file_path: str, max_length: int = 16):
 
     if os.name == 'nt':
         result = result.replace('/', '\\')
+    else:
+        result = result.replace('\\', '/')
     return result
 
 
